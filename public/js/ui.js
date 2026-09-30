@@ -4,12 +4,10 @@
   function toast(message, type = 'info', timeout = 3200) {
     const root = document.getElementById('toastRoot');
     if (!root) return alert(message);
-
     const el = document.createElement('div');
     el.className = `toast ${type}`;
     el.textContent = message;
     root.appendChild(el);
-
     setTimeout(() => {
       el.style.opacity = '0';
       el.style.transform = 'translateX(20px)';
@@ -22,7 +20,6 @@
   function openModal(html) {
     const root = document.getElementById('modalRoot');
     if (!root) return;
-
     const backdrop = document.createElement('div');
     backdrop.className = 'modal-backdrop';
     backdrop.innerHTML = `<div class="modal">${html}</div>`;
@@ -44,7 +41,7 @@
     const l = document.createElement('div');
     l.className = 'loader-screen';
     l.id = 'loader';
-    l.innerHTML = `<img src="/assets/safeid-logo.png" alt="SafeID" /><div class="spinner"></div>`;
+    l.innerHTML = `<img src="/public/assets/safeid-logo.png" alt="SafeID" /><div class="spinner"></div>`;
     document.body.appendChild(l);
   }
 
@@ -54,36 +51,36 @@
     if (!el) return;
     el.className = 'navbar';
     el.innerHTML = `
-      <a class="brand" href="/index.html">
-        <img src="/assets/safeid-logo.png" alt="SafeID" />
+      <a class="brand" href="/">
+        <img src="/public/assets/safeid-logo.png" alt="SafeID" />
         <span>SafeID</span>
       </a>
       <nav class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/index.html#qr">My QR</a>
-        <a href="/index.html#profile">Profile</a>
-        <a href="#" id="navLogout">Logout</a>
+        <a href="/">الرئيسية</a>
+        <a href="/#qr">رمز QR</a>
+        <a href="/#">ملفي</a>
+        <a href="#" id="navLogout">تسجيل الخروج</a>
       </nav>`;
     document.getElementById('navLogout').addEventListener('click', (e) => {
       e.preventDefault();
-      window.Auth.logout('/login-site.html');
+      window.Auth.logout('/login');
     });
   }
 
-  /* ---------- Sidebars ---------- */
+  /* ---------- Parent Sidebar ---------- */
   function renderParentSidebar(active = 'overview') {
     const el = document.getElementById('parentSidebar');
     if (!el) return;
     const links = [
-      ['overview', '📊 Overview'],
-      ['children', '👨‍👩‍👧 My Children'],
-      ['qr', '🔳 QR Codes'],
-      ['profile', '⚙️ Profile'],
-      ['logout', '🚪 Logout']
+      ['overview', '📊 نظرة عامة'],
+      ['children', '👨‍👩‍👧 أبنائي'],
+      ['qr', '🔳 رموز QR'],
+      ['profile', '⚙️ ملفي'],
+      ['logout', '🚪 تسجيل الخروج']
     ];
     el.innerHTML = `
       <div class="side-brand">
-        <img src="/assets/safeid-logo.png" alt="SafeID" /><span>SafeID</span>
+        <img src="/public/assets/safeid-logo.png" alt="SafeID" /><span>SafeID</span>
       </div>
       ${links.map(([key, label]) => `
         <button class="side-link ${key === active ? 'active' : ''} ${key === 'logout' ? 'danger' : ''}" data-section="${key}">${label}</button>
@@ -92,44 +89,9 @@
     el.querySelectorAll('[data-section]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const s = btn.dataset.section;
-        if (s === 'logout') return window.Auth.logout('/login-parent.html');
+        if (s === 'logout') return window.Auth.logout('/login-parent');
         document.querySelectorAll('.dash-section').forEach((x) => x.classList.remove('active'));
         document.getElementById(`section-${s}`)?.classList.add('active');
-        el.querySelectorAll('.side-link').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('parentSidebar').classList.remove('open');
-      });
-    });
-  }
-
-  function renderAdminSidebar(active = 'dashboard') {
-    const el = document.getElementById('adminSidebar');
-    if (!el) return;
-    const links = [
-      ['dashboard', '📊 Dashboard'],
-      ['patients', '👥 Patients'],
-      ['parents', '👨‍👩‍👧 Parents'],
-      ['emergencies', '🚨 Emergencies'],
-      ['qr', '🔳 QR Management'],
-      ['reports', '📈 Reports'],
-      ['settings', '⚙️ Settings'],
-      ['logout', '🚪 Logout']
-    ];
-    el.innerHTML = `
-      <div class="side-brand">
-        <img src="/assets/safeid-logo.png" alt="SafeID" /><span>SafeID Admin</span>
-      </div>
-      ${links.map(([key, label]) => `
-        <button class="side-link ${key === active ? 'active' : ''} ${key === 'logout' ? 'danger' : ''}" data-section="${key}">${label}</button>
-      `).join('')}
-    `;
-    el.querySelectorAll('[data-section]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const s = btn.dataset.section;
-        if (s === 'logout') return window.Auth.logout('/login-admin.html');
-        document.querySelectorAll('.dash-section').forEach((x) => x.classList.remove('active'));
-        document.getElementById(`section-${s}`)?.classList.add('active');
-        document.getElementById('adminPageTitle').textContent = btn.textContent.trim().replace(/^\S+\s/, '');
         el.querySelectorAll('.side-link').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         el.classList.remove('open');
@@ -151,8 +113,12 @@
   function formatDate(d) {
     if (!d) return '—';
     const dt = new Date(d);
-    return isNaN(dt) ? '—' : dt.toLocaleDateString();
+    return isNaN(dt) ? '—' : dt.toLocaleDateString('ar-EG');
   }
 
-  window.UI = { toast, openModal, closeModal, hideLoader, showLoader, renderNavbar, renderParentSidebar, renderAdminSidebar, bindSidebarToggle, escapeHtml, formatDate };
+  window.UI = {
+    toast, openModal, closeModal, hideLoader, showLoader,
+    renderNavbar, renderParentSidebar, bindSidebarToggle,
+    escapeHtml, formatDate
+  };
 })();
