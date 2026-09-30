@@ -8,8 +8,20 @@
     "dev": "nodemon server.js",
     "seed": "node server/scripts/seed.js"
   },
+  "keywords": [
+    "safeid",
+    "emergency",
+    "qr",
+    "health",
+    "identification",
+    "firebase",
+    "cloudinary"
+  ],
+  "author": "SafeID Team",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -22,6 +34,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "qrcode": "^1.5.4",
+    "streamifier": "^0.1.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
