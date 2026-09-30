@@ -8,7 +8,7 @@ const path = require('path');
 const { validateEnv } = require('./config/env');
 const { notFoundHandler, errorHandler } = require('./middleware/error.middleware');
 
-/* Routes */
+/* ---------- Routes ---------- */
 const authRoutes      = require('./routes/auth.routes');
 const patientRoutes   = require('./routes/patient.routes');
 const parentRoutes    = require('./routes/parent.routes');
@@ -24,8 +24,8 @@ const app = express();
 /* ---------- Security + parsers ---------- */
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json({ limit: '5mb' }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 
