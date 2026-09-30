@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up — SafeID</title>
+  <title>إنشاء حساب — SafeID</title>
   <link rel="icon" href="/public/assets/safeid-logo.png" />
   <link rel="manifest" href="/public/manifest.json" />
   <meta name="theme-color" content="#0A2540" />
@@ -16,34 +16,34 @@
   <div class="auth-wrap">
     <aside class="auth-side">
       <img src="/public/assets/safeid-logo.png" alt="SafeID" class="auth-logo" />
-      <h1>Create Your SafeID</h1>
-      <p>Your Safety, One Scan Away.</p>
+      <h1>أنشئ حساب SafeID</h1>
+      <p>أمانك على بعد مسح واحد.</p>
       <ul class="auth-features">
-        <li>✔ Unique QR per person</li>
-        <li>✔ Secure emergency profile</li>
-        <li>✔ Instant access when it matters</li>
+        <li>✔ رمز QR فريد لكل شخص</li>
+        <li>✔ ملف طوارئ آمن</li>
+        <li>✔ وصول فوري عند الحاجة</li>
       </ul>
     </aside>
 
     <main class="auth-main">
       <form id="signupForm" class="auth-form" novalidate>
-        <h2>Patient Registration</h2>
+        <h2>تسجيل المريض</h2>
 
         <div class="form-row">
-          <label>Full Name<input type="text" name="fullName" required /></label>
-          <label>Date of Birth<input type="date" name="dob" required /></label>
+          <label>الاسم بالكامل<input type="text" name="fullName" required /></label>
+          <label>تاريخ الميلاد<input type="date" name="dob" required /></label>
         </div>
 
         <div class="form-row">
-          <label>Gender
+          <label>الجنس
             <select name="gender" required>
-              <option value="">Select</option>
-              <option>Male</option><option>Female</option><option>Other</option>
+              <option value="">اختر</option>
+              <option>ذكر</option><option>أنثى</option><option>آخر</option>
             </select>
           </label>
-          <label>Blood Type
+          <label>فصيلة الدم
             <select name="bloodType" required>
-              <option value="">Select</option>
+              <option value="">اختر</option>
               <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
               <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
             </select>
@@ -51,29 +51,29 @@
         </div>
 
         <div class="form-row">
-          <label>Phone<input type="tel" name="phone" required /></label>
-          <label>Email<input type="email" name="email" required /></label>
+          <label>رقم الهاتف<input type="tel" name="phone" required /></label>
+          <label>البريد الإلكتروني<input type="email" name="email" required /></label>
         </div>
 
-        <label>Password<input type="password" name="password" minlength="8" required /></label>
+        <label>كلمة المرور<input type="password" name="password" minlength="8" required /></label>
 
-        <h3>Emergency Contact</h3>
+        <h3>جهة الاتصال في الطوارئ</h3>
         <div class="form-row">
-          <label>Contact Name<input type="text" name="ecName" required /></label>
-          <label>Contact Phone<input type="tel" name="ecPhone" required /></label>
+          <label>اسم جهة الاتصال<input type="text" name="ecName" required /></label>
+          <label>رقم جهة الاتصال<input type="tel" name="ecPhone" required /></label>
         </div>
 
-        <h3>Medical Info</h3>
-        <label>Allergies<input type="text" name="allergies" placeholder="e.g. Penicillin" /></label>
-        <label>Medical Conditions<input type="text" name="conditions" placeholder="e.g. Asthma" /></label>
-        <label>Current Medications<input type="text" name="medications" /></label>
+        <h3>المعلومات الطبية</h3>
+        <label>الحساسية<input type="text" name="allergies" placeholder="مثال: البنسلين" /></label>
+        <label>الحالات المرضية<input type="text" name="conditions" placeholder="مثال: الربو" /></label>
+        <label>الأدوية الحالية<input type="text" name="medications" /></label>
 
-        <label>Address<input type="text" name="address" /></label>
-        <label>Profile Photo<input type="file" name="photo" accept="image/*" /></label>
+        <label>العنوان<input type="text" name="address" /></label>
+        <label>الصورة الشخصية<input type="file" name="photo" accept="image/*" /></label>
 
-        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-        <p class="auth-alt">Already have an account? <a href="/login">Login</a></p>
-        <p class="auth-alt"><a href="/sign-up-parent">Register as Parent</a> · <a href="/login-admin">Admin</a></p>
+        <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+        <p class="auth-alt">لديك حساب بالفعل؟ <a href="/login">تسجيل الدخول</a></p>
+        <p class="auth-alt"><a href="/sign-up-parent">التسجيل كولي أمر</a></p>
       </form>
     </main>
   </div>
