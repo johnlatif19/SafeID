@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
     initFirebase();
     app.listen(PORT, () => {
       console.log(`✅ SafeID server running on port ${PORT}`);
-      console.log(`🌐 http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error('❌ Failed to start server:', err.message);
