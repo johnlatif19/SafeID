@@ -5,21 +5,7 @@ const { requireRole } = require('../middleware/role.middleware');
 const EmergencyController = require('../controllers/emergency.controller');
 
 /* ================================================================== */
-/*  PUBLIC ROUTES                                                     */
-/*  No authentication — accessed via QR scan                          */
-/* ================================================================== */
-
-/* GET /emergency/:token → public emergency profile */
-router.get(
-  '/:token',
-  emergencyLimiter,
-  EmergencyController.getPublicProfile
-);
-
-/* ================================================================== */
-/*  ADMIN ROUTES                                                      */
-/*  Requires ADMIN role — mounted under /emergency/admin/*            */
-/*  (called from admin dashboard)                                     */
+/*  ADMIN ROUTES (must come BEFORE /:token)                           */
 /* ================================================================== */
 
 router.get(
@@ -41,6 +27,16 @@ router.get(
   requireAuth,
   requireRole('ADMIN'),
   EmergencyController.countScans
+);
+
+/* ================================================================== */
+/*  PUBLIC ROUTE (LAST — catches everything else)                     */
+/* ================================================================== */
+
+router.get(
+  '/:token',
+  emergencyLimiter,
+  EmergencyController.getPublicProfile
 );
 
 module.exports = router;
