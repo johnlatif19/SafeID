@@ -1,3 +1,5 @@
+/* SafeID — Unified response helpers */
+
 function ok(res, data = {}, message = 'OK') {
   return res.json({ success: true, message, ...data });
 }
@@ -26,4 +28,12 @@ function serverError(res, message = 'Server error') {
   return res.status(500).json({ success: false, message });
 }
 
-module.exports = { ok, created, badRequest, unauthorized, forbidden, notFound, serverError };
+module.exports = {
+  ok,
+  created,
+  badRequest,
+  unauthorized,
+  forbidden,
+  notFound,
+  serverError
+};
