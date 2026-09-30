@@ -7,7 +7,6 @@
     storage.setItem(C.TOKEN_KEY, token);
     storage.setItem(C.ROLE_KEY, role);
     storage.setItem(C.USER_KEY, JSON.stringify(user || {}));
-    // Also mirror in localStorage for shared access, but keep remember flag info
     if (!remember) {
       localStorage.removeItem(C.TOKEN_KEY);
       localStorage.removeItem(C.ROLE_KEY);
@@ -35,13 +34,13 @@
     });
   }
 
-  function logout(redirect = '/login-site.html') {
+  function logout(redirect = '/login') {
     clearSession();
     location.href = redirect;
   }
 
   /** Guard: ensures a valid session + role, else redirect */
-  function requireRole(role, redirect = '/login-site.html') {
+  function requireRole(role, redirect = '/login') {
     const token = getToken();
     const r = getRole();
     if (!token || (role && r !== role)) {
