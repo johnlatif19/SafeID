@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SafeID — My Profile</title>
+  <title>SafeID — ملفي الشخصي</title>
   <link rel="icon" href="/public/assets/safeid-logo.png" />
   <link rel="manifest" href="/public/manifest.json" />
   <meta name="theme-color" content="#0A2540" />
@@ -23,64 +23,64 @@
 
   <main class="container page-profile">
     <section class="card profile-header">
-      <img id="profilePhoto" src="/public/assets/safeid-logo.png" alt="Profile" class="avatar" />
+      <img id="profilePhoto" src="/public/assets/safeid-logo.png" alt="الصورة الشخصية" class="avatar" />
       <div class="profile-meta">
-        <h1 id="profileName">Loading...</h1>
-        <p class="muted">SafeID: <span id="safeidNumber">—</span></p>
+        <h1 id="profileName">جارٍ التحميل...</h1>
+        <p class="muted">رقم SafeID: <span id="safeidNumber">—</span></p>
         <div class="badges">
           <span class="badge badge-blood" id="bloodTypeBadge">—</span>
-          <span class="badge badge-success" id="statusBadge">Active</span>
+          <span class="badge badge-success" id="statusBadge">مُفعّل</span>
         </div>
       </div>
-      <button class="btn btn-outline" id="editProfileBtn">Edit Profile</button>
+      <button class="btn btn-outline" id="editProfileBtn">تعديل الملف</button>
     </section>
 
     <section class="card emergency-cta">
       <div>
-        <h2>Emergency Access</h2>
-        <p class="muted">Scan the QR code to view critical emergency information.</p>
+        <h2>الدخول في حالة الطوارئ</h2>
+        <p class="muted">امسح رمز الاستجابة السريعة (QR) لعرض معلومات الطوارئ الأساسية.</p>
       </div>
-      <button class="btn btn-emergency" id="emergencyBtn">🚨 EMERGENCY</button>
+      <button class="btn btn-emergency" id="emergencyBtn">🚨 حالة طوارئ</button>
     </section>
 
     <div class="grid-2">
       <section class="card">
-        <h3>Basic Information</h3>
+        <h3>المعلومات الأساسية</h3>
         <dl class="info-list">
-          <dt>Date of Birth</dt><dd id="dob">—</dd>
-          <dt>Gender</dt><dd id="gender">—</dd>
-          <dt>Phone</dt><dd id="phone">—</dd>
-          <dt>Email</dt><dd id="email">—</dd>
-          <dt>Address</dt><dd id="address">—</dd>
+          <dt>تاريخ الميلاد</dt><dd id="dob">—</dd>
+          <dt>الجنس</dt><dd id="gender">—</dd>
+          <dt>رقم الهاتف</dt><dd id="phone">—</dd>
+          <dt>البريد الإلكتروني</dt><dd id="email">—</dd>
+          <dt>العنوان</dt><dd id="address">—</dd>
         </dl>
       </section>
 
       <section class="card">
-        <h3>Emergency Contact</h3>
+        <h3>جهة الاتصال في الطوارئ</h3>
         <dl class="info-list">
-          <dt>Name</dt><dd id="ecName">—</dd>
-          <dt>Phone</dt><dd id="ecPhone">—</dd>
+          <dt>الاسم</dt><dd id="ecName">—</dd>
+          <dt>رقم الهاتف</dt><dd id="ecPhone">—</dd>
         </dl>
-        <h3 class="mt">Medical Summary</h3>
+        <h3 class="mt">الملخص الطبي</h3>
         <dl class="info-list">
-          <dt>Blood Type</dt><dd id="bloodType">—</dd>
-          <dt>Allergies</dt><dd id="allergies">—</dd>
-          <dt>Conditions</dt><dd id="conditions">—</dd>
-          <dt>Medications</dt><dd id="medications">—</dd>
+          <dt>فصيلة الدم</dt><dd id="bloodType">—</dd>
+          <dt>الحساسية</dt><dd id="allergies">—</dd>
+          <dt>الحالات المرضية</dt><dd id="conditions">—</dd>
+          <dt>الأدوية الحالية</dt><dd id="medications">—</dd>
         </dl>
       </section>
     </div>
 
     <section class="card qr-section" id="qr">
-      <h3>My Emergency QR</h3>
-      <p class="muted">This QR contains only a secure link — no medical data.</p>
+      <h3>رمز الاستجابة السريعة (QR)</h3>
+      <p class="muted">هذا الرمز يحتوي على رابط آمن فقط — لا يحتوي على أي بيانات طبية.</p>
       <div class="qr-wrap">
-        <img id="qrImage" alt="QR Code" />
+        <img id="qrImage" alt="رمز QR" />
       </div>
       <div class="qr-actions">
-        <button class="btn btn-secondary" id="downloadQrBtn">⬇ Download</button>
-        <button class="btn btn-secondary" id="printQrBtn">🖨 Print</button>
-        <button class="btn btn-secondary" id="copyLinkBtn">🔗 Copy Link</button>
+        <button class="btn btn-secondary" id="downloadQrBtn">⬇ تحميل</button>
+        <button class="btn btn-secondary" id="printQrBtn">🖨 طباعة</button>
+        <button class="btn btn-secondary" id="copyLinkBtn">🔗 نسخ الرابط</button>
       </div>
       <p class="qr-link" id="qrLink"></p>
     </section>
