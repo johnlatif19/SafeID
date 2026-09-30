@@ -8,15 +8,7 @@
     "dev": "nodemon server.js",
     "seed": "node server/scripts/seed.js"
   },
-  "keywords": [
-    "safeid",
-    "emergency",
-    "qr",
-    "health",
-    "identification",
-    "firebase",
-    "cloudinary"
-  ],
+  "keywords": ["safeid", "emergency", "qr", "health", "identification"],
   "author": "SafeID Team",
   "license": "MIT",
   "dependencies": {
