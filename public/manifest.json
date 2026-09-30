@@ -1,10 +1,12 @@
 {
-  "name": "SafeID — Your Safety, One Scan Away",
+  "name": "SafeID — أمانك على بعد مسح واحد",
   "short_name": "SafeID",
-  "description": "Digital emergency identification platform.",
+  "description": "منصة تعريف الطوارئ الرقمية.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
   "background_color": "#F7F9FC",
   "theme_color": "#0A2540",
   "icons": [
