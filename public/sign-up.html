@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — SafeID</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <link rel="manifest" href="/public/manifest.json" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/auth.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-wrap">
+    <aside class="auth-side">
+      <img src="/public/assets/safeid-logo.png" alt="SafeID" class="auth-logo" />
+      <h1>Create Your SafeID</h1>
+      <p>Your Safety, One Scan Away.</p>
+      <ul class="auth-features">
+        <li>✔ Unique QR per person</li>
+        <li>✔ Secure emergency profile</li>
+        <li>✔ Instant access when it matters</li>
+      </ul>
+    </aside>
+
+    <main class="auth-main">
+      <form id="signupForm" class="auth-form" novalidate>
+        <h2>Patient Registration</h2>
+
+        <div class="form-row">
+          <label>Full Name<input type="text" name="fullName" required /></label>
+          <label>Date of Birth<input type="date" name="dob" required /></label>
+        </div>
+
+        <div class="form-row">
+          <label>Gender
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </label>
+          <label>Blood Type
+            <select name="bloodType" required>
+              <option value="">Select</option>
+              <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Phone<input type="tel" name="phone" required /></label>
+          <label>Email<input type="email" name="email" required /></label>
+        </div>
+
+        <label>Password<input type="password" name="password" minlength="8" required /></label>
+
+        <h3>Emergency Contact</h3>
+        <div class="form-row">
+          <label>Contact Name<input type="text" name="ecName" required /></label>
+          <label>Contact Phone<input type="tel" name="ecPhone" required /></label>
+        </div>
+
+        <h3>Medical Info</h3>
+        <label>Allergies<input type="text" name="allergies" placeholder="e.g. Penicillin" /></label>
+        <label>Medical Conditions<input type="text" name="conditions" placeholder="e.g. Asthma" /></label>
+        <label>Current Medications<input type="text" name="medications" /></label>
+
+        <label>Address<input type="text" name="address" /></label>
+        <label>Profile Photo<input type="file" name="photo" accept="image/*" /></label>
+
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+        <p class="auth-alt">Already have an account? <a href="/login">Login</a></p>
+        <p class="auth-alt"><a href="/sign-up-parent">Register as Parent</a> · <a href="/login-admin">Admin</a></p>
+      </form>
+    </main>
+  </div>
+
+  <div id="toastRoot"></div>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/validation.js"></script>
+  <script src="/public/js/sign-up.js"></script>
+</body>
+</html>

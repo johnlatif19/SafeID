@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeID — My Profile</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <link rel="manifest" href="/public/manifest.json" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/layout.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/dashboard.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body>
+  <div id="loader" class="loader-screen">
+    <img src="/public/assets/safeid-logo.png" alt="SafeID" />
+    <div class="spinner"></div>
+  </div>
+
+  <header id="navbar"></header>
+
+  <main class="container page-profile">
+    <section class="card profile-header">
+      <img id="profilePhoto" src="/public/assets/safeid-logo.png" alt="Profile" class="avatar" />
+      <div class="profile-meta">
+        <h1 id="profileName">Loading...</h1>
+        <p class="muted">SafeID: <span id="safeidNumber">—</span></p>
+        <div class="badges">
+          <span class="badge badge-blood" id="bloodTypeBadge">—</span>
+          <span class="badge badge-success" id="statusBadge">Active</span>
+        </div>
+      </div>
+      <button class="btn btn-outline" id="editProfileBtn">Edit Profile</button>
+    </section>
+
+    <section class="card emergency-cta">
+      <div>
+        <h2>Emergency Access</h2>
+        <p class="muted">Scan the QR code to view critical emergency information.</p>
+      </div>
+      <button class="btn btn-emergency" id="emergencyBtn">🚨 EMERGENCY</button>
+    </section>
+
+    <div class="grid-2">
+      <section class="card">
+        <h3>Basic Information</h3>
+        <dl class="info-list">
+          <dt>Date of Birth</dt><dd id="dob">—</dd>
+          <dt>Gender</dt><dd id="gender">—</dd>
+          <dt>Phone</dt><dd id="phone">—</dd>
+          <dt>Email</dt><dd id="email">—</dd>
+          <dt>Address</dt><dd id="address">—</dd>
+        </dl>
+      </section>
+
+      <section class="card">
+        <h3>Emergency Contact</h3>
+        <dl class="info-list">
+          <dt>Name</dt><dd id="ecName">—</dd>
+          <dt>Phone</dt><dd id="ecPhone">—</dd>
+        </dl>
+        <h3 class="mt">Medical Summary</h3>
+        <dl class="info-list">
+          <dt>Blood Type</dt><dd id="bloodType">—</dd>
+          <dt>Allergies</dt><dd id="allergies">—</dd>
+          <dt>Conditions</dt><dd id="conditions">—</dd>
+          <dt>Medications</dt><dd id="medications">—</dd>
+        </dl>
+      </section>
+    </div>
+
+    <section class="card qr-section" id="qr">
+      <h3>My Emergency QR</h3>
+      <p class="muted">This QR contains only a secure link — no medical data.</p>
+      <div class="qr-wrap">
+        <img id="qrImage" alt="QR Code" />
+      </div>
+      <div class="qr-actions">
+        <button class="btn btn-secondary" id="downloadQrBtn">⬇ Download</button>
+        <button class="btn btn-secondary" id="printQrBtn">🖨 Print</button>
+        <button class="btn btn-secondary" id="copyLinkBtn">🔗 Copy Link</button>
+      </div>
+      <p class="qr-link" id="qrLink"></p>
+    </section>
+  </main>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot"></div>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/auth.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/qr.js"></script>
+  <script src="/public/js/profile.js"></script>
+  <script src="/public/js/pwa.js"></script>
+</body>
+</html>

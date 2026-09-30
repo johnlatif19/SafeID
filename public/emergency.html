@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Emergency — SafeID</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <meta name="theme-color" content="#DC2626" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/emergency.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body class="emergency-body">
+  <div id="emergencyLoader" class="loader-screen">
+    <img src="/public/assets/safeid-logo.png" alt="SafeID" />
+    <p>Loading emergency profile...</p>
+    <div class="spinner"></div>
+  </div>
+
+  <header class="emergency-header">
+    <img src="/public/assets/safeid-logo.png" alt="SafeID" />
+    <span class="emergency-tag">EMERGENCY</span>
+  </header>
+
+  <main id="emergencyContent" class="emergency-main hidden">
+    <section class="emg-person card">
+      <img id="emgPhoto" src="/public/assets/safeid-logo.png" alt="Photo" class="emg-photo" />
+      <div>
+        <h1 id="emgName">—</h1>
+        <p class="emg-safeid">SafeID: <span id="emgSafeId">—</span></p>
+      </div>
+    </section>
+
+    <section class="emg-critical card critical">
+      <div class="critical-item">
+        <span>Blood Type</span>
+        <strong id="emgBlood" class="emg-blood">—</strong>
+      </div>
+      <div class="critical-item">
+        <span>Allergies</span>
+        <strong id="emgAllergies">—</strong>
+      </div>
+      <div class="critical-item">
+        <span>Medical Conditions</span>
+        <strong id="emgConditions">—</strong>
+      </div>
+      <div class="critical-item" id="emgMedicationsWrap">
+        <span>Medications</span>
+        <strong id="emgMedications">—</strong>
+      </div>
+    </section>
+
+    <section class="emg-contact card">
+      <h3>Emergency Contact</h3>
+      <p><strong id="emgEcName">—</strong></p>
+      <p class="muted" id="emgEcPhone">—</p>
+    </section>
+
+    <section class="emg-notes card" id="emgNotesWrap">
+      <h3>Critical Notes</h3>
+      <p id="emgNotes">—</p>
+    </section>
+
+    <section class="emg-actions">
+      <a id="callContactBtn" class="btn btn-emergency btn-block" href="#">📞 CALL EMERGENCY CONTACT</a>
+      <a id="callServicesBtn" class="btn btn-dark btn-block" href="#">🚑 CALL EMERGENCY SERVICES</a>
+      <button id="shareLocationBtn" class="btn btn-outline btn-block">📍 SHARE LOCATION</button>
+    </section>
+
+    <footer class="emg-footer">
+      <p>Emergency information provided by SafeID.</p>
+    </footer>
+  </main>
+
+  <main id="emergencyNotFound" class="emergency-main hidden">
+    <div class="not-found card">
+      <img src="/public/assets/safeid-logo.png" alt="SafeID" />
+      <h2>SafeID profile not found</h2>
+      <p class="muted">This QR code is invalid, expired, or has been disabled.</p>
+    </div>
+  </main>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/emergency.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Sign Up — SafeID</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/auth.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-wrap">
+    <aside class="auth-side parent-side">
+      <img src="/public/assets/safeid-logo.png" alt="SafeID" class="auth-logo" />
+      <h1>Parent Account</h1>
+      <p>Manage your children's SafeID profiles.</p>
+    </aside>
+
+    <main class="auth-main">
+      <form id="parentSignupForm" class="auth-form" novalidate>
+        <h2>Parent Registration</h2>
+
+        <label>Full Name<input type="text" name="fullName" required /></label>
+        <div class="form-row">
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Phone<input type="tel" name="phone" required /></label>
+        </div>
+        <label>Password<input type="password" name="password" minlength="8" required /></label>
+        <label>Relationship
+          <select name="relationship" required>
+            <option value="">Select</option>
+            <option>Mother</option><option>Father</option>
+            <option>Guardian</option><option>Other</option>
+          </select>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block">Create Parent Account</button>
+        <p class="auth-alt">Already registered? <a href="/login-parent">Login</a></p>
+      </form>
+    </main>
+  </div>
+
+  <div id="toastRoot"></div>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/validation.js"></script>
+  <script src="/public/js/sign-up-parent.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+body.admin .sidebar { background: #0B1220; }
+body.admin .side-link.active { background: var(--teal); }
+
+.data-table { font-size: .85rem; }
+.data-table .actions { display: flex; gap: .35rem; }
+
+.status-dot { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .82rem; }
+.status-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gray-500); }
+.status-dot.active::before { background: var(--success); }
+.status-dot.disabled::before { background: var(--danger); }

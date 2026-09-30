@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Dashboard — SafeID</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/layout.css" />
+  <link rel="stylesheet" href="/public/css/parent.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body class="dash-body">
+  <aside class="sidebar" id="parentSidebar"></aside>
+
+  <main class="dash-main">
+    <header class="dash-header">
+      <button class="hamburger" id="sidebarToggle">☰</button>
+      <h1>Parent Dashboard</h1>
+      <span class="user-chip" id="parentChip">—</span>
+    </header>
+
+    <section id="section-overview" class="dash-section active">
+      <div class="stat-grid">
+        <div class="card stat"><span>Children</span><strong id="statChildren">0</strong></div>
+        <div class="card stat"><span>Notifications</span><strong id="statNotifications">0</strong></div>
+        <div class="card stat"><span>Emergency Scans</span><strong id="statScans">0</strong></div>
+      </div>
+      <h2>Recent Notifications</h2>
+      <ul id="notificationsList" class="list"></ul>
+    </section>
+
+    <section id="section-children" class="dash-section">
+      <h2>My Children</h2>
+      <div id="childrenGrid" class="children-grid"></div>
+    </section>
+
+    <section id="section-qr" class="dash-section">
+      <h2>QR Codes</h2>
+      <div id="qrList" class="qr-list"></div>
+    </section>
+
+    <section id="section-profile" class="dash-section">
+      <h2>My Profile</h2>
+      <form id="parentProfileForm" class="card form">
+        <label>Full Name<input type="text" name="fullName" /></label>
+        <label>Email<input type="email" name="email" disabled /></label>
+        <label>Phone<input type="tel" name="phone" /></label>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="toastRoot"></div>
+  <div id="modalRoot"></div>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/auth.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/qr.js"></script>
+  <script src="/public/js/dashboard-parent.js"></script>
+</body>
+</html>

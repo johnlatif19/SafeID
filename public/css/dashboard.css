@@ -1,0 +1,33 @@
+.page-profile { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.profile-header {
+  display: flex; align-items: center; gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.avatar {
+  width: 92px; height: 92px; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--white);
+  box-shadow: var(--shadow);
+}
+.profile-meta { flex: 1; min-width: 200px; }
+.profile-meta h1 { margin-bottom: .2rem; }
+.badges { display: flex; gap: .5rem; margin-top: .6rem; }
+
+.emergency-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  background: linear-gradient(135deg, #FEF2F2, #FFF);
+  border-color: #FECACA;
+}
+.emergency-cta h2 { color: var(--danger); }
+
+.qr-section { text-align: center; }
+.qr-wrap { display: flex; justify-content: center; margin: 1.5rem 0; }
+.qr-wrap img { width: 220px; height: 220px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: .5rem; background: var(--white); }
+.qr-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+.qr-link { font-size: .8rem; color: var(--gray-500); word-break: break-all; margin-top: 1rem; }
+
+@media print {
+  .navbar, .emergency-cta, .btn, .qr-actions { display: none !important; }
+  .qr-wrap img { width: 320px; height: 320px; }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — SafeID</title>
+  <link rel="icon" href="/public/assets/safeid-logo.png" />
+  <meta name="theme-color" content="#0A2540" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/components.css" />
+  <link rel="stylesheet" href="/public/css/layout.css" />
+  <link rel="stylesheet" href="/public/css/admin.css" />
+  <link rel="stylesheet" href="/public/css/responsive.css" />
+</head>
+<body class="dash-body admin">
+  <aside class="sidebar" id="adminSidebar"></aside>
+
+  <main class="dash-main">
+    <header class="dash-header">
+      <button class="hamburger" id="sidebarToggle">☰</button>
+      <h1 id="adminPageTitle">Dashboard</h1>
+      <span class="user-chip">Admin</span>
+    </header>
+
+    <section id="section-dashboard" class="dash-section active">
+      <div class="stat-grid">
+        <div class="card stat"><span>Total Patients</span><strong id="statPatients">0</strong></div>
+        <div class="card stat"><span>Total Parents</span><strong id="statParents">0</strong></div>
+        <div class="card stat"><span>Active SafeIDs</span><strong id="statActive">0</strong></div>
+        <div class="card stat"><span>Emergency Scans</span><strong id="statScans">0</strong></div>
+      </div>
+      <h2>Recent Emergencies</h2>
+      <table class="data-table">
+        <thead><tr><th>ID</th><th>Patient</th><th>Time</th><th>Status</th></tr></thead>
+        <tbody id="recentEmergencies"></tbody>
+      </table>
+    </section>
+
+    <section id="section-patients" class="dash-section">
+      <div class="section-toolbar">
+        <input type="search" id="patientSearch" placeholder="Search patients..." />
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th><th>SafeID</th><th>Email</th><th>Phone</th>
+            <th>Status</th><th>Registered</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTable"></tbody>
+      </table>
+    </section>
+
+    <section id="section-parents" class="dash-section">
+      <input type="search" id="parentSearch" placeholder="Search parents..." />
+      <table class="data-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Children</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="parentsTable"></tbody>
+      </table>
+    </section>
+
+    <section id="section-emergencies" class="dash-section">
+      <div class="section-toolbar">
+        <input type="date" id="emergencyFilterDate" />
+        <select id="emergencyFilterStatus">
+          <option value="">All Status</option>
+          <option value="resolved">Resolved</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Emergency ID</th><th>Patient</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+        <tbody id="emergenciesTable"></tbody>
+      </table>
+    </section>
+
+    <section id="section-qr" class="dash-section">
+      <input type="search" id="qrSearch" placeholder="Search by SafeID..." />
+      <table class="data-table">
+        <thead><tr><th>SafeID</th><th>Owner</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="qrTable"></tbody>
+      </table>
+    </section>
+
+    <section id="section-reports" class="dash-section">
+      <h2>Reports</h2>
+      <p class="muted">Export and analytics (coming soon).</p>
+    </section>
+
+    <section id="section-settings" class="dash-section">
+      <h2>Settings</h2>
+      <p class="muted">System settings (coming soon).</p>
+    </section>
+  </main>
+
+  <div id="toastRoot"></div>
+  <div id="modalRoot"></div>
+
+  <script src="/public/js/config.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script src="/public/js/auth.js"></script>
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/dashboard-admin.js"></script>
+</body>
+</html>
