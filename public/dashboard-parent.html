@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parent Dashboard — SafeID</title>
+  <title>لوحة ولي الأمر — SafeID</title>
   <link rel="icon" href="/public/assets/safeid-logo.png" />
   <meta name="theme-color" content="#0A2540" />
   <link rel="stylesheet" href="/public/css/base.css" />
@@ -18,37 +18,37 @@
   <main class="dash-main">
     <header class="dash-header">
       <button class="hamburger" id="sidebarToggle">☰</button>
-      <h1>Parent Dashboard</h1>
+      <h1>لوحة ولي الأمر</h1>
       <span class="user-chip" id="parentChip">—</span>
     </header>
 
     <section id="section-overview" class="dash-section active">
       <div class="stat-grid">
-        <div class="card stat"><span>Children</span><strong id="statChildren">0</strong></div>
-        <div class="card stat"><span>Notifications</span><strong id="statNotifications">0</strong></div>
-        <div class="card stat"><span>Emergency Scans</span><strong id="statScans">0</strong></div>
+        <div class="card stat"><span>الأبناء</span><strong id="statChildren">0</strong></div>
+        <div class="card stat"><span>الإشعارات</span><strong id="statNotifications">0</strong></div>
+        <div class="card stat"><span>عمليات مسح الطوارئ</span><strong id="statScans">0</strong></div>
       </div>
-      <h2>Recent Notifications</h2>
+      <h2>أحدث الإشعارات</h2>
       <ul id="notificationsList" class="list"></ul>
     </section>
 
     <section id="section-children" class="dash-section">
-      <h2>My Children</h2>
+      <h2>أبنائي</h2>
       <div id="childrenGrid" class="children-grid"></div>
     </section>
 
     <section id="section-qr" class="dash-section">
-      <h2>QR Codes</h2>
+      <h2>رموز الاستجابة السريعة (QR)</h2>
       <div id="qrList" class="qr-list"></div>
     </section>
 
     <section id="section-profile" class="dash-section">
-      <h2>My Profile</h2>
+      <h2>ملفي الشخصي</h2>
       <form id="parentProfileForm" class="card form">
-        <label>Full Name<input type="text" name="fullName" /></label>
-        <label>Email<input type="email" name="email" disabled /></label>
-        <label>Phone<input type="tel" name="phone" /></label>
-        <button class="btn btn-primary" type="submit">Save</button>
+        <label>الاسم بالكامل<input type="text" name="fullName" /></label>
+        <label>البريد الإلكتروني<input type="email" name="email" disabled /></label>
+        <label>رقم الهاتف<input type="tel" name="phone" /></label>
+        <button class="btn btn-primary" type="submit">حفظ</button>
       </form>
     </section>
   </main>
