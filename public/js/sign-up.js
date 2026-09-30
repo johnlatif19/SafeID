@@ -14,20 +14,28 @@
 
     try {
       const fd = new FormData(form);
-      // Remove empty photo if not chosen
+
+      /* Remove empty photo field */
       const photo = fd.get('photo');
       if (!photo || !photo.name) fd.delete('photo');
 
+      /* Send FormData — multer on backend receives it */
       const res = await window.API.postForm('/auth/register/patient', fd);
+
       window.UI.toast('Account created! Redirecting...', 'success');
-      // Save session if returned
+
       if (res && res.token) {
-        window.Auth.saveSession({ token: res.token, role: 'PATIENT', user: res.user, remember: true });
+        window.Auth.saveSession({
+          token: res.token,
+          role: 'PATIENT',
+          user: res.user,
+          remember: true
+        });
       }
-      setTimeout(() => { location.href = '/index.html'; }, 600);
+
+      setTimeout(() => { location.href = '/'; }, 600);
     } catch (err) {
       window.UI.toast(err.message || 'Registration failed.', 'error');
-    } finally {
       btn.disabled = false;
       btn.textContent = original;
     }
