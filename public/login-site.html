@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login — SafeID</title>
+  <title>تسجيل الدخول — SafeID</title>
   <link rel="icon" href="/public/assets/safeid-logo.png" />
   <link rel="manifest" href="/public/manifest.json" />
   <meta name="theme-color" content="#0A2540" />
@@ -16,25 +16,25 @@
   <div class="auth-wrap">
     <aside class="auth-side">
       <img src="/public/assets/safeid-logo.png" alt="SafeID" class="auth-logo" />
-      <h1>Welcome Back</h1>
-      <p>Your Safety, One Scan Away.</p>
+      <h1>أهلًا بعودتك</h1>
+      <p>أمانك على بعد مسح واحد.</p>
     </aside>
 
     <main class="auth-main">
       <form id="loginForm" class="auth-form" novalidate>
-        <h2>Patient Login</h2>
+        <h2>تسجيل دخول المريض</h2>
 
-        <label>Email<input type="email" name="email" required /></label>
-        <label>Password<input type="password" name="password" required /></label>
+        <label>البريد الإلكتروني<input type="email" name="email" required /></label>
+        <label>كلمة المرور<input type="password" name="password" required /></label>
 
         <div class="form-inline">
-          <label class="checkbox"><input type="checkbox" name="remember" /> Remember me</label>
-          <a href="#" class="link-muted" id="forgotLink">Forgot password?</a>
+          <label class="checkbox"><input type="checkbox" name="remember" /> تذكرني</label>
+          <a href="#" class="link-muted" id="forgotLink">نسيت كلمة المرور؟</a>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <p class="auth-alt">New here? <a href="/sign-up">Create account</a></p>
-        <p class="auth-alt"><a href="/login-parent">Parent Login</a> · <a href="/login-admin">Admin</a></p>
+        <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+        <p class="auth-alt">ليس لديك حساب؟ <a href="/sign-up">إنشاء حساب</a></p>
+        <p class="auth-alt"><a href="/login-parent">دخول أولياء الأمور</a></p>
       </form>
     </main>
   </div>
