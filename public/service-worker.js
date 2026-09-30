@@ -14,7 +14,6 @@ const CORE_ASSETS = [
   '/public/css/auth.css',
   '/public/css/dashboard.css',
   '/public/css/parent.css',
-  '/public/css/admin.css',
   '/public/css/emergency.css',
   '/public/js/config.js',
   '/public/js/api.js',
