@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parent Sign Up — SafeID</title>
+  <title>تسجيل ولي الأمر — SafeID</title>
   <link rel="icon" href="/public/assets/safeid-logo.png" />
   <meta name="theme-color" content="#0A2540" />
   <link rel="stylesheet" href="/public/css/base.css" />
@@ -15,30 +15,30 @@
   <div class="auth-wrap">
     <aside class="auth-side parent-side">
       <img src="/public/assets/safeid-logo.png" alt="SafeID" class="auth-logo" />
-      <h1>Parent Account</h1>
-      <p>Manage your children's SafeID profiles.</p>
+      <h1>حساب ولي أمر</h1>
+      <p>أدر ملفات SafeID الخاصة بأبنائك.</p>
     </aside>
 
     <main class="auth-main">
       <form id="parentSignupForm" class="auth-form" novalidate>
-        <h2>Parent Registration</h2>
+        <h2>تسجيل ولي الأمر</h2>
 
-        <label>Full Name<input type="text" name="fullName" required /></label>
+        <label>الاسم بالكامل<input type="text" name="fullName" required /></label>
         <div class="form-row">
-          <label>Email<input type="email" name="email" required /></label>
-          <label>Phone<input type="tel" name="phone" required /></label>
+          <label>البريد الإلكتروني<input type="email" name="email" required /></label>
+          <label>رقم الهاتف<input type="tel" name="phone" required /></label>
         </div>
-        <label>Password<input type="password" name="password" minlength="8" required /></label>
-        <label>Relationship
+        <label>كلمة المرور<input type="password" name="password" minlength="8" required /></label>
+        <label>صلة القرابة
           <select name="relationship" required>
-            <option value="">Select</option>
-            <option>Mother</option><option>Father</option>
-            <option>Guardian</option><option>Other</option>
+            <option value="">اختر</option>
+            <option>الأم</option><option>الأب</option>
+            <option>ولي أمر</option><option>أخرى</option>
           </select>
         </label>
 
-        <button type="submit" class="btn btn-primary btn-block">Create Parent Account</button>
-        <p class="auth-alt">Already registered? <a href="/login-parent">Login</a></p>
+        <button type="submit" class="btn btn-primary btn-block">إنشاء حساب ولي الأمر</button>
+        <p class="auth-alt">مسجل بالفعل؟ <a href="/login-parent">تسجيل الدخول</a></p>
       </form>
     </main>
   </div>
