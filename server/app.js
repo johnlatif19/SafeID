@@ -20,6 +20,7 @@ validateEnv();
 
 /* ---------- Create Express app ---------- */
 const app = express();
+app.set('trust proxy', 1);
 
 /* ---------- Security + parsers ---------- */
 app.use(helmet({ contentSecurityPolicy: false }));
