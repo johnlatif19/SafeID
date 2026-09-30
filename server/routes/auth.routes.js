@@ -1,110 +1,86 @@
-const AuthService = require('../services/auth.service');
-const { uploadBuffer } = require('../config/cloudinary');
-const { created, ok, badRequest } = require('../utils/response');
+const router = require('express').Router();
+const multer = require('multer');
+const { body } = require('express-validator');
+const { validate } = require('../middleware/validate.middleware');
+const { authLimiter } = require('../middleware/rateLimit.middleware');
+const { requireAuth } = require('../middleware/auth.middleware');
+const AuthController = require('../controllers/auth.controller');
 
-/* ---------- Patient Registration ---------- */
-async function registerPatient(req, res, next) {
-  try {
-    /* Upload profile photo to Cloudinary if provided */
-    let photoUrl = '';
-    if (req.file) {
-      try {
-        const result = await uploadBuffer(req.file.buffer, 'safeid/profiles');
-        photoUrl = result.secure_url;
-      } catch (uploadErr) {
-        console.warn('Cloudinary upload failed:', uploadErr.message);
-        /* continue registration without photo — don't block the user */
-      }
-    }
+/* Multer — memory storage (we upload buffer directly to Cloudinary) */
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 } // 5MB
+});
 
-    const result = await AuthService.registerPatient({
-      ...req.body,
-      photo: photoUrl
-    });
+/* ---------- Patient registration ---------- */
+router.post(
+  '/register/patient',
+  upload.single('photo'),
+  authLimiter,
+  [
+    body('fullName').notEmpty().withMessage('Full name is required'),
+    body('email').isEmail().withMessage('Valid email is required'),
+    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
+    body('phone').notEmpty().withMessage('Phone is required'),
+    body('bloodType').notEmpty().withMessage('Blood type is required'),
+    body('ecName').notEmpty().withMessage('Emergency contact name is required'),
+    body('ecPhone').notEmpty().withMessage('Emergency contact phone is required')
+  ],
+  validate,
+  AuthController.registerPatient
+);
 
-    return created(res, result, 'Patient registered');
-  } catch (err) {
-    if (err.message.includes('Email already')) return badRequest(res, err.message);
-    next(err);
-  }
-}
+/* ---------- Parent registration ---------- */
+router.post(
+  '/register/parent',
+  authLimiter,
+  [
+    body('fullName').notEmpty().withMessage('Full name is required'),
+    body('email').isEmail().withMessage('Valid email is required'),
+    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
+    body('phone').notEmpty().withMessage('Phone is required')
+  ],
+  validate,
+  AuthController.registerParent
+);
 
-/* ---------- Parent Registration ---------- */
-async function registerParent(req, res, next) {
-  try {
-    const result = await AuthService.registerParent(req.body);
-    return created(res, result, 'Parent registered');
-  } catch (err) {
-    if (err.message.includes('Email already')) return badRequest(res, err.message);
-    next(err);
-  }
-}
+/* ---------- Patient login ---------- */
+router.post(
+  '/login/patient',
+  authLimiter,
+  [
+    body('email').isEmail().withMessage('Valid email is required'),
+    body('password').notEmpty().withMessage('Password is required')
+  ],
+  validate,
+  AuthController.loginPatient
+);
 
-/* ---------- Patient Login ---------- */
-async function loginPatient(req, res, next) {
-  try {
-    const { email, password } = req.body;
-    const result = await AuthService.login(email, password, 'PATIENT');
-    return ok(res, result, 'Logged in');
-  } catch (err) {
-    if (err.message === 'Invalid credentials') {
-      return res.status(401).json({ success: false, message: 'Invalid email or password' });
-    }
-    if (err.message === 'Account disabled') {
-      return res.status(403).json({ success: false, message: 'Account disabled' });
-    }
-    next(err);
-  }
-}
+/* ---------- Parent login ---------- */
+router.post(
+  '/login/parent',
+  authLimiter,
+  [
+    body('email').isEmail().withMessage('Valid email is required'),
+    body('password').notEmpty().withMessage('Password is required')
+  ],
+  validate,
+  AuthController.loginParent
+);
 
-/* ---------- Parent Login ---------- */
-async function loginParent(req, res, next) {
-  try {
-    const { email, password } = req.body;
-    const result = await AuthService.login(email, password, 'PARENT');
-    return ok(res, result, 'Logged in');
-  } catch (err) {
-    if (err.message === 'Invalid credentials') {
-      return res.status(401).json({ success: false, message: 'Invalid email or password' });
-    }
-    if (err.message === 'Account disabled') {
-      return res.status(403).json({ success: false, message: 'Account disabled' });
-    }
-    next(err);
-  }
-}
+/* ---------- Admin login ---------- */
+router.post(
+  '/login/admin',
+  authLimiter,
+  [
+    body('username').notEmpty().withMessage('Username is required'),
+    body('password').notEmpty().withMessage('Password is required')
+  ],
+  validate,
+  AuthController.loginAdmin
+);
 
-/* ---------- Admin Login ---------- */
-async function loginAdmin(req, res, next) {
-  try {
-    const { username, password } = req.body;
-    if (!username || !password) {
-      return badRequest(res, 'Username and password required');
-    }
+/* ---------- Current user ---------- */
+router.get('/me', requireAuth, AuthController.me);
 
-    /* Derive internal email from username (matches seed.js) */
-    const email = username.includes('@') ? username : `${username}@safeid.local`;
-
-    const result = await AuthService.login(email, password, 'ADMIN');
-    return ok(res, result, 'Logged in');
-  } catch (err) {
-    if (err.message === 'Invalid credentials') {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
-    }
-    next(err);
-  }
-}
-
-/* ---------- Current User ---------- */
-async function me(req, res) {
-  return ok(res, { user: req.user });
-}
-
-module.exports = {
-  registerPatient,
-  registerParent,
-  loginPatient,
-  loginParent,
-  loginAdmin,
-  me
-};
+module.exports = router;
